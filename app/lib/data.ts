@@ -9,12 +9,12 @@ import {
 } from './definitions';
 import { formatCurrency } from './utils';
 
-const sql = postgres('postgres://postgres:root@localhost:5432/next-app', { 
-  host: 'localhost',
-  port: 5432,
-  database: 'next-app',
-  username: 'postgres',
-  password: 'root',
+const sql = postgres(process.env.DATABASE_URL!, { 
+    host: process.env.POSTGRES_HOST,
+    port: parseInt(process.env.POSTGRES_PORT!),
+    database: process.env.POSTGRES_DATABASE,
+    username: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
 });
 
 export async function fetchRevenue() {
